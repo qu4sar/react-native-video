@@ -37,6 +37,7 @@ public class ReactVideoViewManager extends SimpleViewManager<ReactVideoView> {
     public static final String PROP_RATE = "rate";
     public static final String PROP_FULLSCREEN = "fullscreen";
     public static final String PROP_PLAY_IN_BACKGROUND = "playInBackground";
+    public static final String PROP_EAR_PIECE = "earPiece";
     public static final String PROP_CONTROLS = "controls";
 
     @Override
@@ -157,6 +158,11 @@ public class ReactVideoViewManager extends SimpleViewManager<ReactVideoView> {
     @ReactProp(name = PROP_PLAY_IN_BACKGROUND, defaultBoolean = false)
     public void setPlayInBackground(final ReactVideoView videoView, final boolean playInBackground) {
         videoView.setPlayInBackground(playInBackground);
+    }
+
+    @ReactProp(name = PROP_EAR_PIECE, defaultBoolean = false)
+    public void setEarPiece(final ReactVideoView videoView, final boolean earPiece) {
+        videoView.setEarPiece(earPiece);
     }
 
     @ReactProp(name = PROP_CONTROLS, defaultBoolean = false)

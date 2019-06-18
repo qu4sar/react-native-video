@@ -51,6 +51,7 @@ public class ReactExoplayerViewManager extends ViewGroupManager<ReactExoplayerVi
     private static final String PROP_MIN_LOAD_RETRY_COUNT = "minLoadRetryCount";
     private static final String PROP_MAXIMUM_BIT_RATE = "maxBitRate";
     private static final String PROP_PLAY_IN_BACKGROUND = "playInBackground";
+    private static final String PROP_EAR_PIECE = "earPiece";
     private static final String PROP_DISABLE_FOCUS = "disableFocus";
     private static final String PROP_FULLSCREEN = "fullscreen";
     private static final String PROP_USE_TEXTURE_VIEW = "useTextureView";
@@ -240,6 +241,11 @@ public class ReactExoplayerViewManager extends ViewGroupManager<ReactExoplayerVi
     @ReactProp(name = PROP_PLAY_IN_BACKGROUND, defaultBoolean = false)
     public void setPlayInBackground(final ReactExoplayerView videoView, final boolean playInBackground) {
         videoView.setPlayInBackground(playInBackground);
+    }
+      
+    @ReactProp(name = PROP_EAR_PIECE, defaultBoolean = false)
+    public void setEarPiece(final ReactExoplayerView videoView, final boolean earPiece) {
+        videoView.setEarPiece(earPiece);
     }
 
     @ReactProp(name = PROP_DISABLE_FOCUS, defaultBoolean = false)

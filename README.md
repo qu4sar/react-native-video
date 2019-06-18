@@ -255,6 +255,7 @@ var styles = StyleSheet.create({
 ```
 
 ### Configurable props
+* [earpiece](#earpiece)
 * [allowsExternalPlayback](#allowsexternalplayback)
 * [audioOnly](#audioonly)
 * [bufferConfig](#bufferconfig)
@@ -317,6 +318,12 @@ var styles = StyleSheet.create({
 * [seek](#seek)
 
 ### Configurable props
+
+#### earPiece
+Indicates whether the player audio exit from speaker or earpiece.
+* **true (default)** - allow earpiece
+* **false** -  Don't allow earpiece
+
 
 #### allowsExternalPlayback
 Indicates whether the player allows switching to external playback mode such as AirPlay or HDMI.

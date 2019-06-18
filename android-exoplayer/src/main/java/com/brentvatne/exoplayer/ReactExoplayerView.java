@@ -142,6 +142,7 @@ class ReactExoplayerView extends FrameLayout implements
     private boolean disableFocus;
     private float mProgressUpdateInterval = 250.0f;
     private boolean playInBackground = false;
+    private boolean earPiece = false;
     private Map<String, String> requestHeaders;
     private boolean mReportBandwidth = false;
     // \ End props
@@ -1092,6 +1093,9 @@ class ReactExoplayerView extends FrameLayout implements
         initializePlayer();
     }
 
+    public void setEarPiece(boolean earPiece){
+        this.earPiece = earPiece;
+    }
     public void setPlayInBackground(boolean playInBackground) {
         this.playInBackground = playInBackground;
     }

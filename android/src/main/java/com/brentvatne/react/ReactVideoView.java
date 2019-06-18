@@ -130,6 +130,7 @@ public class ReactVideoView extends ScalableVideoView implements
     private float mActiveRate = 1.0f;
     private long mSeekTime = 0;
     private boolean mPlayInBackground = false;
+    private boolean mEarPiece = false;
     private boolean mBackgroundPaused = false;
     private boolean mIsFullscreen = false;
 
@@ -524,6 +525,11 @@ public class ReactVideoView extends ScalableVideoView implements
     public void setPlayInBackground(final boolean playInBackground) {
 
         mPlayInBackground = playInBackground;
+    }
+
+
+     public void setEarPiece(final boolean earPiece) {
+        mEarPiece = earPiece;
     }
 
     public void setControls(boolean controls) {

@@ -184,10 +184,8 @@ class ReactExoplayerView extends FrameLayout implements
         audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
         themedReactContext.addLifecycleEventListener(this);
         audioBecomingNoisyReceiver = new AudioBecomingNoisyReceiver(themedReactContext);
-       // initializePlayer(earPiece);
+        // initializePlayer(earPiece);
     }
-
-
 
 
     @Override
@@ -359,9 +357,7 @@ class ReactExoplayerView extends FrameLayout implements
             player.setPlaybackParameters(params);
 
         }
-        if (earPiece) {
-            player.setAudioStreamType(AudioManager.STREAM_VOICE_CALL);
-        }
+        player.setAudioStreamType(earPiece ? AudioManager.STREAM_VOICE_CALL : AudioManager.STREAM_MUSIC);
         if (playerNeedsSource && srcUri != null) {
             ArrayList<MediaSource> mediaSourceList = buildTextSources();
             MediaSource videoSource = buildMediaSource(srcUri, extension);

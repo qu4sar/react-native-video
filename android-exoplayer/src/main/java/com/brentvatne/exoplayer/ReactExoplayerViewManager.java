@@ -245,7 +245,7 @@ public class ReactExoplayerViewManager extends ViewGroupManager<ReactExoplayerVi
       
     @ReactProp(name = PROP_EAR_PIECE, defaultBoolean = false)
     public void setEarPiece(final ReactExoplayerView videoView, final boolean earPiece) {
-        videoView.setEarPiece(earPiece);
+        videoView.setearPiece(earPiece);
     }
 
     @ReactProp(name = PROP_DISABLE_FOCUS, defaultBoolean = false)

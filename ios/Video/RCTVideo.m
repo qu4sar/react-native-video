@@ -63,6 +63,8 @@ static int const RCTVideoUnset = -1;
   NSDictionary * _selectedAudioTrack;
   BOOL _playbackStalled;
   BOOL _playInBackground;
+  BOOL _earPiece;
+    
   BOOL _playWhenInactive;
   BOOL _pictureInPicture;
   NSString * _ignoreSilentSwitch;
@@ -102,7 +104,8 @@ static int const RCTVideoUnset = -1;
     _progressUpdateInterval = 250;
     _controls = NO;
     _playerBufferEmpty = YES;
-    _playInBackground = false;
+      _playInBackground = false;
+      _earPiece = false;
     _allowsExternalPlayback = YES;
     _playWhenInactive = false;
     _pictureInPicture = false;
@@ -799,6 +802,11 @@ static int const RCTVideoUnset = -1;
   _resizeMode = mode;
 }
 
+- (void)setEarpiece:(BOOL)earPiece
+{
+    _earPiece = earPiece;
+}
+
 - (void)setPlayInBackground:(BOOL)playInBackground
 {
   _playInBackground = playInBackground;
@@ -813,6 +821,21 @@ static int const RCTVideoUnset = -1;
 - (void)setPlayWhenInactive:(BOOL)playWhenInactive
 {
   _playWhenInactive = playWhenInactive;
+}
+
+-(void)toggleSpeakerMode{
+    NSError *error = nil;
+    // Get the current session
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    AVAudioSessionPortDescription *routePort = session.currentRoute.outputs.firstObject;
+    NSString *portType = routePort.portType;
+    
+    // Toggle between speaker and earpiece
+    if (_earPiece) {
+        [session  overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&error];
+    } else {
+        [session  overrideOutputAudioPort:AVAudioSessionPortOverrideNone error:&error];
+    }
 }
 
 - (void)setPictureInPicture:(BOOL)pictureInPicture
@@ -1521,8 +1544,8 @@ static int const RCTVideoUnset = -1;
             exportSession.outputURL = url;
             exportSession.videoComposition = _playerItem.videoComposition;
             exportSession.shouldOptimizeForNetworkUse = true;
+            [self toggleSpeakerMode]
             [exportSession exportAsynchronouslyWithCompletionHandler:^{
-
                 switch ([exportSession status]) {
                     case AVAssetExportSessionStatusFailed:
                         reject(@"ERROR_COULD_NOT_EXPORT_VIDEO", @"Could not export video", exportSession.error);

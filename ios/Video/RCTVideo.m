@@ -1544,7 +1544,7 @@ static int const RCTVideoUnset = -1;
             exportSession.outputURL = url;
             exportSession.videoComposition = _playerItem.videoComposition;
             exportSession.shouldOptimizeForNetworkUse = true;
-            [self toggleSpeakerMode]
+            [self toggleSpeakerMode];
             [exportSession exportAsynchronouslyWithCompletionHandler:^{
                 switch ([exportSession status]) {
                     case AVAssetExportSessionStatusFailed:
